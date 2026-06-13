@@ -66,13 +66,11 @@ export function Footer() {
       className="text-red-600 hover:text-red-700"
     >
   تواصل معي
+    +218931304601
     </a>
   </p>
 
-  <p className="text-center sm:text-start text-sm text-gray-400">
-    {t.footer.copyright}
-  </p>
-
+  
 </div>
       </div>
     </footer>
