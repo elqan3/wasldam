@@ -54,6 +54,26 @@ export function Footer() {
             {t.footer.copyright}
           </p>
         </div>
+        <div className="mt-10 border-t border-gray-100 pt-6 space-y-2">
+
+  <p className="text-center sm:text-start text-xs text-gray-400">
+    Founded & Developed by ElQantri
+  </p>
+
+  <p className="text-center sm:text-start text-sm">
+    <a
+      href="wasldamly@gmail.com"
+      className="text-red-600 hover:text-red-700"
+    >
+  تواصل معي
+    </a>
+  </p>
+
+  <p className="text-center sm:text-start text-sm text-gray-400">
+    {t.footer.copyright}
+  </p>
+
+</div>
       </div>
     </footer>
   );
