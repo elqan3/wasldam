@@ -106,12 +106,40 @@ export default function SearchPage() {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         >
-          <option>ترهونة</option>
-          <option>طرابلس</option>
-          <option>مصراتة</option>
-          <option>بنغازي</option>
-          <option>الخمس</option>
-          <option>الزاوية</option>
+         <option>ترهونة</option>
+  <option>طرابلس</option>
+  <option>بنغازي</option>
+  <option>مصراتة</option>
+  <option>الزاوية</option>
+  <option>الخمس</option>
+  <option>زليتن</option>
+  <option>صبراتة</option>
+  <option>صرمان</option>
+  <option>العجيلات</option>
+  <option>غريان</option>
+  <option>الزنتان</option>
+  <option>يفرن</option>
+  <option>نالوت</option>
+  <option>سبها</option>
+  <option>أوباري</option>
+  <option>مرزق</option>
+  <option>الشاطئ</option>
+  <option>سرت</option>
+  <option>أجدابيا</option>
+  <option>البيضاء</option>
+  <option>درنة</option>
+  <option>طبرق</option>
+  <option>المرج</option>
+  <option>شحات</option>
+  <option>الكفرة</option>
+  <option>تازربو</option>
+  <option>جالو</option>
+  <option>هون</option>
+  <option>ودان</option>
+  <option>سوكنة</option>
+  <option>رقدالين</option>
+  <option>زوارة</option>
+  <option>بني وليد</option>
         </select>
 
         <button
