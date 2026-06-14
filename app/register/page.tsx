@@ -179,6 +179,7 @@ router.replace("/profile");
   className="w-full rounded-xl border px-4 py-3"
 >
   <option>ترهونة</option>
+          <option>العواتة</option>
   <option>طرابلس</option>
   <option>بنغازي</option>
   <option>مصراتة</option>
