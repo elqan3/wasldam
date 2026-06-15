@@ -202,9 +202,10 @@ const [donorId, setDonorId] = useState<string | null>(null);
             onChange={handleChange}
             className="w-full border rounded-xl p-3"
           >
-           <option>ترهونة</option>
-            <option>العواتة</option>
-  <option>طرابلس</option>
+   <option>طرابلس</option>
+  <option>ترهونة</option>
+  <option>العواتة</option>
+ <option>قصر ألأخيار</option>
   <option>بنغازي</option>
   <option>مصراتة</option>
   <option>الزاوية</option>
