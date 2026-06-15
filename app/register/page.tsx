@@ -1,11 +1,11 @@
 "use client";
-import Link from "next/link";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
 type RegisterForm = {
-  email: string;
+  
   password: string;
   full_name: string;
   phone: string;
@@ -18,7 +18,7 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState<RegisterForm>({
-    email: "",
+   
     password: "",
     full_name: "",
     phone: "",
@@ -38,7 +38,7 @@ export default function Register() {
   async function handleRegister() {
     // Validation
     if (
-      !form.email.trim() ||
+      
       !form.password.trim() ||
       !form.full_name.trim() ||
       !form.phone.trim()
@@ -56,11 +56,11 @@ export default function Register() {
 
     try {
       // 1. إنشاء الحساب
-      const { data, error: authError } = await supabase.auth.signUp({
-        email: form.email,
-        password: form.password,
-      });
-
+      const generatedEmail = `${form.phone}@wasldam.local`;
+     const { data, error: authError } = await supabase.auth.signUp({
+  email: generatedEmail,
+  password: form.password,
+});
       if (authError) {
         alert(authError.message);
         setLoading(false);
@@ -138,14 +138,7 @@ router.replace("/profile");
             className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-red-500"
           />
 
-          <input
-            name="email"
-            type="email"
-            placeholder="البريد الإلكتروني"
-            value={form.email}
-            onChange={handleChange}
-            className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-red-500"
-          />
+         
 
           <input
             name="password"
@@ -172,18 +165,16 @@ router.replace("/profile");
             <option>O-</option>
           </select>
 
-        <select
+     <select
   name="city"
   value={form.city}
   onChange={handleChange}
   className="w-full rounded-xl border px-4 py-3"
 >
-   <option>طرابلس</option>
   <option>ترهونة</option>
-  <option>العواتة</option>
-<option>بنغازي</option>
+  <option>طرابلس</option>
+  <option>بنغازي</option>
   <option>مصراتة</option>
- <option>قصر ألأخيار</option>
   <option>الزاوية</option>
   <option>الخمس</option>
   <option>زليتن</option>
