@@ -178,12 +178,12 @@ router.replace("/profile");
   onChange={handleChange}
   className="w-full rounded-xl border px-4 py-3"
 >
+   <option>طرابلس</option>
   <option>ترهونة</option>
   <option>العواتة</option>
-  <option>طرابلس</option>
- <option>قصر ألأخيار</option>
-  <option>بنغازي</option>
+<option>بنغازي</option>
   <option>مصراتة</option>
+ <option>قصر ألأخيار</option>
   <option>الزاوية</option>
   <option>الخمس</option>
   <option>زليتن</option>
