@@ -106,9 +106,8 @@ export default function SearchPage() {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         >
-         <option>ترهونة</option>
-        
   <option>طرابلس</option>
+  <option>ترهونة</option>
   <option>قصر ألأخيار</option>
   <option>بنغازي</option>
   <option>مصراتة</option>
