@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
@@ -223,7 +223,27 @@ router.replace("/profile");
           >
             {loading ? "جاري إنشاء الحساب..." : "إنشاء حساب متبرع"}
           </button>
+<div className="text-center pt-2">
 
+  <p className="text-gray-600">
+
+    لديك حساب بالفعل؟
+
+  </p>
+
+  <Link
+
+    href="/login"
+
+    className="inline-block mt-2 text-red-600 font-bold hover:text-red-700"
+
+  >
+
+    تسجيل الدخول
+
+  </Link>
+
+</div>
         </div>
       </div>
     </div>
