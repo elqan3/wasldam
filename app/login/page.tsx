@@ -7,7 +7,7 @@ import { supabase } from "@/lib/supabase";
 export default function LoginPage() {
   const router = useRouter();
 
-  const [email, setEmail] = useState("");
+const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -16,13 +16,15 @@ export default function LoginPage() {
     setLoading(true);
     setError("");
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const generatedEmail = `${phone}@wasldam.local`;
+
+const { data, error } = await supabase.auth.signInWithPassword({
+  email: generatedEmail,
+  password,
+});
 
     if (error) {
-      setError(error.message);
+      setError("رقم الهاتف أو كلمة المرور غير صحيحة");
       setLoading(false);
       return;
     }
@@ -49,12 +51,12 @@ export default function LoginPage() {
         <div className="space-y-3">
 
           <input
-            type="email"
-            placeholder="البريد الإلكتروني"
-            className="w-full border p-2 rounded"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+  type="tel"
+  placeholder="رقم الهاتف"
+  className="w-full border p-2 rounded"
+  value={phone}
+  onChange={(e) => setPhone(e.target.value)}
+/>
 
           <input
             type="password"
