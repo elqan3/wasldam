@@ -223,12 +223,7 @@ router.replace("/profile");
           >
             {loading ? "جاري إنشاء الحساب..." : "إنشاء حساب متبرع"}
           </button>
-   <Link
-              href="/login"
-              className="border border-gray-300 hover:bg-gray-100 px-6 py-3 rounded-xl font-bold transition"
-            >
-          تسجيل دخول 
-            </Link>
+
         </div>
       </div>
     </div>
