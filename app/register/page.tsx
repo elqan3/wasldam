@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-
 type RegisterForm = {
   
   password: string;
@@ -38,75 +37,74 @@ export default function Register() {
   async function handleRegister() {
     // Validation
     if (
-  !form.password.trim() ||
-  !form.full_name.trim() ||
-  !form.phone.trim()
-) {
-  alert("يرجى تعبئة جميع الحقول المطلوبة");
-  return;
-}
+      
+      !form.password.trim() ||
+      !form.full_name.trim() ||
+      !form.phone.trim()
+    ) {
+      alert("يرجى تعبئة جميع الحقول المطلوبة");
+      return;
+    }
 
-if (form.password.length < 6) {
-  alert("كلمة المرور يجب أن تكون 6 أحرف على الأقل");
-  return;
-}
+    if (form.password.length < 6) {
+      alert("كلمة المرور يجب أن تكون 6 أحرف على الأقل");
+      return;
+    }
 
-if (form.phone.trim().length < 9) {
-  alert("يرجى إدخال رقم هاتف صحيح");
-  return;
-}
+    setLoading(true);
 
-setLoading(true);
+    try {
+      // 1. إنشاء الحساب
+      const generatedEmail = `${form.phone}@wasldam.local`;
+     const { data, error: authError } = await supabase.auth.signUp({
+  email: generatedEmail,
+  password: form.password,
+});
+      if (authError) {
+        alert(authError.message);
+        setLoading(false);
+        return;
+      }
 
-try {
-  const phone = form.phone.trim();
-  const generatedEmail = `${phone}@wasldam.local`;
+      const user = data?.user;
 
-  const { data, error: authError } = await supabase.auth.signUp({
-    email: generatedEmail,
-    password: form.password,
-  });
+      if (!user) {
+        alert("فشل إنشاء الحساب، حاول مرة أخرى");
+        setLoading(false);
+        return;
+      }
 
-  if (authError) {
-    alert(authError.message);
-    setLoading(false);
-    return;
-  }
+      // 2. إنشاء سجل المتبرع
+      const { error: insertError } = await supabase.from("donors").insert({
+        user_id: user.id,
+        full_name: form.full_name,
+        phone: form.phone,
+        blood_type: form.blood_type,
+        city: form.city,
+        available: true,
+        profile_completed: false,
+        updated_at: new Date(),
+      });
 
-  const user = data?.user;
+      if (insertError) {
+        alert(insertError.message);
+        setLoading(false);
+        return;
+      }
 
-  if (!user) {
-    alert("فشل إنشاء الحساب، حاول مرة أخرى");
-    setLoading(false);
-    return;
-  }
+     // 3. نجاح
+alert("تم إنشاء الحساب بنجاح");
 
-  const { error: insertError } = await supabase.from("donors").insert({
-    user_id: user.id,
-    full_name: form.full_name,
-    phone: phone,
-    blood_type: form.blood_type,
-    city: form.city,
-    available: true,
-    profile_completed: false,
-    updated_at: new Date(),
-  });
+// 4. تحويل مباشر للبروفايل
+router.replace("/profile");
 
-  if (insertError) {
-    alert(insertError.message);
-    setLoading(false);
-    return;
-  }
-
-  alert("تم إنشاء الحساب بنجاح");
-  router.replace("/profile");
-
-} catch (error) {
+} catch (error: unknown) {
   console.error(error);
   alert("حدث خطأ غير متوقع");
 } finally {
   setLoading(false);
 }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4">
@@ -132,13 +130,12 @@ try {
           />
 
           <input
-  type="tel"
-  name="phone"
-  placeholder="رقم الهاتف"
-  value={form.phone}
-  onChange={handleChange}
-  className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-red-500"
-/>
+            name="phone"
+            placeholder="رقم الهاتف"
+            value={form.phone}
+            onChange={handleChange}
+            className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-red-500"
+          />
 
          
 
